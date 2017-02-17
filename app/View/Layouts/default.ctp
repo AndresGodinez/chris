@@ -14,13 +14,15 @@
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
 
-$cakeDescription = __d('cake_dev', 'Linea de Producción');
-$cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
+$cakeDescription = __d('Restaurante', 'Sistema Restaurante');
+//$cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 ?>
 <!DOCTYPE html>
 <html>
 <head>
 	<?php echo $this->Html->charset(); ?>
+	<?php echo $this->Html->meta(array('name' => 'viewport', 'content' => 'width=device-width, minimum-scale=1, maximum-scale=1')); ?>
+
 	<title>
 		<?php echo $cakeDescription ?>:
 		<?php echo $this->fetch('title'); ?>
@@ -28,54 +30,34 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 	<?php
 		echo $this->Html->meta('icon');
 
-		echo $this->Html->css(
-			array(
-				'myStyle.css',
-				'bootstrap.min',
-				'bootstrap-theme.min',
-				'animate.css',
-				'fileinput.min',
-				'jquery-ui.min'
-				)
-			);
-		echo $this->Html->script(
-			array(
-				'jquery.min',
-				'docs.min',
-				'bootstrap.min',
-				'scriptControl',
-				'fileinput.min',
-				'jquery-ui.min'
-				)
-			);
+		echo $this->Html->css(array('style.css' ,'bootstrap.min', 'bootstrap-theme.min', 'fileinput.min', 'jquery-ui.min'));
+		echo $this->Html->script(array('jquery.min', 'bootstrap.min', 'fileinput.min', 'jquery-ui.min', 'search'));
+
 		echo $this->fetch('meta');
 		echo $this->fetch('css');
 		echo $this->fetch('script');
 	?>
 	<script type="text/javascript">
 		$("#foto").fileinput();
-		var basePath = "<?php echo Router::url('/'); ?>";
-		$("#ine_frontal").fileinput();
-		var basePath = "<?php echo Router::url('/'); ?>";
-		$("#ine_trasera").fileinput();
-		var basePath = "<?php echo Router::url('/'); ?>";
-		$("#dom").fileinput();
-		var basePath = "<?php echo Router::url('/'); ?>";
+		
+		var basePath = "<?php echo Router::url('/'); ?>"
 	</script>
-
 </head>
 <body>
+	<?php if(isset($current_user)): ?>
+	<?php echo $this->element('menu'); ?>
+	<?php endif; ?>
 
+    <div class="container" role="main">
 
- <?php echo $this->element('menu'); ?>
+			<?php echo $this->Session->flash(); ?>
+			<?php echo $this->Session->flash('auth'); ?>
 
-  <div class="container theme-showcase" role="main">
-
-      		<div class="col-md-12 messageCssSession" id='menssageSession'>
-      			<?php echo $this->Session->flash(); ?>		
-      		</div>
-      		
 			<?php echo $this->fetch('content'); ?>
-  </div>
+			
+			<br>
+			<div id="msg"></div>
+			<br>
+    </div>
 </body>
 </html>
