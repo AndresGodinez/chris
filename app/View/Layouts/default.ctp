@@ -30,7 +30,7 @@ $cakeDescription = __d('Restaurante', 'Sistema Restaurante');
 	<?php
 		echo $this->Html->meta('icon');
 
-		echo $this->Html->css(array('style.css' ,'bootstrap.min', 'bootstrap-theme.min', 'fileinput.min', 'jquery-ui.min'));
+		echo $this->Html->css(array('myStyle.css' ,'bootstrap.min', 'bootstrap-theme.min', 'fileinput.min', 'jquery-ui.min'));
 		echo $this->Html->script(array('jquery.min', 'bootstrap.min', 'fileinput.min', 'jquery-ui.min', 'search'));
 
 		echo $this->fetch('meta');
@@ -44,9 +44,9 @@ $cakeDescription = __d('Restaurante', 'Sistema Restaurante');
 	</script>
 </head>
 <body>
-	<?php if(isset($current_user)): ?>
+	<?php //if(isset($current_user)): ?>
 	<?php echo $this->element('menu'); ?>
-	<?php endif; ?>
+	<?php //endif; ?>
 
     <div class="container" role="main">
 
