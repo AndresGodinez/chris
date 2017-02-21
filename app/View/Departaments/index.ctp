@@ -1,15 +1,13 @@
-<div class="departaments index">
-	<h2><?php echo __('Departaments'); ?></h2>
-	<table cellpadding="0" cellspacing="0">
+<div class="departaments index ">
+	<h2><?php echo 'Departamentos'; ?></h2>
+	<table class="table table-striped table-bordered">
 	<thead>
 	<tr>
 			<th><?php echo $this->Paginator->sort('id'); ?></th>
-			<th><?php echo $this->Paginator->sort('name'); ?></th>
-			<th><?php echo $this->Paginator->sort('user_id'); ?></th>
-			<th><?php echo $this->Paginator->sort('created'); ?></th>
-			<th><?php echo $this->Paginator->sort('modified'); ?></th>
-			<th><?php echo $this->Paginator->sort('company_id'); ?></th>
-			<th class="actions"><?php echo __('Actions'); ?></th>
+			<th><?php echo $this->Paginator->sort('Nombre'); ?></th>
+			<th><?php echo $this->Paginator->sort('Encargado'); ?></th>
+			<th><?php echo $this->Paginator->sort('Empresa'); ?></th>
+			<th class="actions"><?php echo __('Acciones'); ?></th>
 	</tr>
 	</thead>
 	<tbody>
@@ -20,15 +18,13 @@
 		<td>
 			<?php echo $this->Html->link($departament['User']['username'], array('controller' => 'users', 'action' => 'view', $departament['User']['id'])); ?>
 		</td>
-		<td><?php echo h($departament['Departament']['created']); ?>&nbsp;</td>
-		<td><?php echo h($departament['Departament']['modified']); ?>&nbsp;</td>
 		<td>
 			<?php echo $this->Html->link($departament['Company']['name'], array('controller' => 'companies', 'action' => 'view', $departament['Company']['id'])); ?>
 		</td>
 		<td class="actions">
-			<?php echo $this->Html->link(__('View'), array('action' => 'view', $departament['Departament']['id'])); ?>
-			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $departament['Departament']['id'])); ?>
-			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $departament['Departament']['id']), array(), __('Are you sure you want to delete # %s?', $departament['Departament']['id'])); ?>
+			<?php echo $this->Html->link(__('Detalles'), array('action' => 'view', $departament['Departament']['id'])); ?>
+			<?php echo $this->Html->link(__('Editar'), array('action' => 'edit', $departament['Departament']['id'])); ?>
+			<?php echo $this->Form->postLink(__('Eliminar'), array('action' => 'delete', $departament['Departament']['id']), array(), __('Esta seguro de elminar '.$departament['Departament']['name'].' ?', $departament['Departament']['id'])); ?>
 		</td>
 	</tr>
 <?php endforeach; ?>

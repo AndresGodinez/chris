@@ -1,12 +1,16 @@
-<div class="modes form">
+<div class="modes form col-md-6">
 <?php echo $this->Form->create('Mode'); ?>
 	<fieldset>
-		<legend><?php echo __('Add Mode'); ?></legend>
+		<legend><?php echo 'Agregar Status Empresa'; ?></legend>
 	<?php
-		echo $this->Form->input('name');
+	/*
+	modos realacionados con los status de las empresas
+	*/
+		echo $this->Form->input('name', array('class'=>'form-control', 'label'=>'Nombre del status', 'placeholder'=>'Nombre Status'));
 	?>
 	</fieldset>
-<?php echo $this->Form->end(__('Submit')); ?>
+	<br>
+<?php echo $this->element('alta-btn'); ?>
 </div>
 <div class="actions">
 	<h3><?php echo __('Actions'); ?></h3>

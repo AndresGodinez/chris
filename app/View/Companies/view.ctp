@@ -1,57 +1,64 @@
-<div class="companies view">
-<h2><?php echo __('Company'); ?></h2>
+<div class="companies view well col-md-12">
+<h2><?php echo h($company['Company']['name']); ?></h2>
+<div class="col-md-6">
 	<dl>
-		<dt><?php echo __('Id'); ?></dt>
+		<dt><?php echo 'Id'; ?></dt>
 		<dd>
 			<?php echo h($company['Company']['id']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Name'); ?></dt>
+		<dt><?php echo 'Nombre'; ?></dt>
 		<dd>
 			<?php echo h($company['Company']['name']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Telephone'); ?></dt>
+		<dt><?php echo 'Telefóno 1'; ?></dt>
 		<dd>
 			<?php echo h($company['Company']['telephone']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Telephone2'); ?></dt>
+		<dt><?php echo 'Telefóno 2'; ?></dt>
 		<dd>
 			<?php echo h($company['Company']['telephone2']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Address'); ?></dt>
+		<dt><?php echo 'Dirección'?></dt>
 		<dd>
 			<?php echo h($company['Company']['address']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('RFC'); ?></dt>
+	</dl>
+</div>
+<div class="col-md-6">
+	<dl>
+		
+		<dt><?php echo 'RFC'; ?></dt>
 		<dd>
 			<?php echo h($company['Company']['RFC']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Mandated'); ?></dt>
+		<dt><?php echo 'Encargado'; ?></dt>
 		<dd>
 			<?php echo h($company['Company']['mandated']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Created'); ?></dt>
+		<dt><?php echo 'Creada'; ?></dt>
 		<dd>
 			<?php echo h($company['Company']['created']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Modified'); ?></dt>
+		<dt><?php echo 'Modificada'; ?></dt>
 		<dd>
 			<?php echo h($company['Company']['modified']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Mode'); ?></dt>
+		<dt><?php echo 'Estado'; ?></dt>
 		<dd>
 			<?php echo $this->Html->link($company['Mode']['name'], array('controller' => 'modes', 'action' => 'view', $company['Mode']['id'])); ?>
 			&nbsp;
 		</dd>
 	</dl>
+	</div>
 </div>
 <div class="actions">
 	<h3><?php echo __('Actions'); ?></h3>

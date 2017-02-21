@@ -1,5 +1,6 @@
-<div class="departaments view">
-<h2><?php echo __('Departament'); ?></h2>
+<div class="departaments view well col-md-12">
+<h2><?php echo 'Departamento '.$departament['Departament']['name'].' de '.$departament['Company']['name']; ?></h2>
+	<div class="col-md-6">
 	<dl>
 		<dt><?php echo __('Id'); ?></dt>
 		<dd>
@@ -16,6 +17,10 @@
 			<?php echo $this->Html->link($departament['User']['username'], array('controller' => 'users', 'action' => 'view', $departament['User']['id'])); ?>
 			&nbsp;
 		</dd>
+	</dl>
+	</div>
+	<div class="col-md-6">
+	<dl>
 		<dt><?php echo __('Created'); ?></dt>
 		<dd>
 			<?php echo h($departament['Departament']['created']); ?>
@@ -32,6 +37,7 @@
 			&nbsp;
 		</dd>
 	</dl>
+	</div>
 </div>
 <div class="actions">
 	<h3><?php echo __('Actions'); ?></h3>
@@ -106,7 +112,7 @@
 		<th><?php echo __('Departament Id'); ?></th>
 		<th class="actions"><?php echo __('Actions'); ?></th>
 	</tr>
-	<?php foreach ($departament['User'] as $user): ?>
+	<?php foreach ($departament['Users'] as $user): ?>
 		<tr>
 			<td><?php echo $user['id']; ?></td>
 			<td><?php echo $user['username']; ?></td>

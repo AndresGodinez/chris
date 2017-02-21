@@ -4,10 +4,14 @@
 		<legend><?php echo __('Edit Status'); ?></legend>
 	<?php
 		echo $this->Form->input('id');
-		echo $this->Form->input('name');
+		echo $this->Form->input('name', array(
+			'class'=>'form-control'
+			'label'=>'nombre'
+			'placeholder'=>'Nombre'
+			));
 	?>
 	</fieldset>
-<?php echo $this->Form->end(__('Submit')); ?>
+<?php echo $this->Form->end(array('class'=>'btn btn-success', 'label'=>'actualizar')); ?>
 </div>
 <div class="actions">
 	<h3><?php echo __('Actions'); ?></h3>

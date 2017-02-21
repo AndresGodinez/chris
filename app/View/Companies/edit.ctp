@@ -1,19 +1,19 @@
-<div class="companies form">
+<div class="companies form col-md-6">
 <?php echo $this->Form->create('Company'); ?>
 	<fieldset>
-		<legend><?php echo __('Edit Company'); ?></legend>
+		<legend><?php echo 'Actualizar Empresa'; ?></legend>
 	<?php
 		echo $this->Form->input('id');
-		echo $this->Form->input('name');
-		echo $this->Form->input('telephone');
-		echo $this->Form->input('telephone2');
-		echo $this->Form->input('address');
-		echo $this->Form->input('RFC');
-		echo $this->Form->input('mandated');
-		echo $this->Form->input('mode_id');
+		echo $this->element('companies_form');
 	?>
 	</fieldset>
-<?php echo $this->Form->end(__('Submit')); ?>
+	<br>
+<?php echo $this->Form->end(
+	array(
+		'label'=>'Actualizar',
+		'class'=>'btn btn-success'
+		)
+	); ?>
 </div>
 <div class="actions">
 	<h3><?php echo __('Actions'); ?></h3>

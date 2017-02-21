@@ -1,16 +1,13 @@
-<div class="payments form">
+<div class="payments form col-md-6">
 <?php echo $this->Form->create('Payment'); ?>
 	<fieldset>
-		<legend><?php echo __('Edit Payment'); ?></legend>
+		<legend><?php echo 'Actualizar Pago'; ?></legend>
 	<?php
 		echo $this->Form->input('id');
-		echo $this->Form->input('company_id');
-		echo $this->Form->input('fecha_pago');
-		echo $this->Form->input('over');
-		echo $this->Form->input('importe');
+		echo $this->element('payments-form');
 	?>
 	</fieldset>
-<?php echo $this->Form->end(__('Submit')); ?>
+<?php echo $this->element('actualizar-btn'); ?>
 </div>
 <div class="actions">
 	<h3><?php echo __('Actions'); ?></h3>

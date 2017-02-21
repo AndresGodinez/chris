@@ -1,12 +1,12 @@
 <div class="roles form">
 <?php echo $this->Form->create('Role'); ?>
 	<fieldset>
-		<legend><?php echo __('Add Role'); ?></legend>
+		<legend><?php echo 'Nuevo Role'; ?></legend>
 	<?php
-		echo $this->Form->input('name');
+		echo $this->Form->input('name', array('class'=>'form-control','label'=>'Nombre', 'placeholder'=>'Nombre'));
 	?>
 	</fieldset>
-<?php echo $this->Form->end(__('Submit')); ?>
+<?php echo $this->Form->end(array('label'=>'Agregar', 'class'=>'btn btn-success')); ?>
 </div>
 <div class="actions">
 	<h3><?php echo __('Actions'); ?></h3>

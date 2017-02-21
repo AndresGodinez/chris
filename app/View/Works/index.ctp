@@ -1,19 +1,17 @@
 <div class="works index">
 	<h2><?php echo __('Works'); ?></h2>
-	<table cellpadding="0" cellspacing="0">
+	<table class="table table-striped table-responsive table-bordered">
 	<thead>
 	<tr>
 			<th><?php echo $this->Paginator->sort('id'); ?></th>
-			<th><?php echo $this->Paginator->sort('folio'); ?></th>
-			<th><?php echo $this->Paginator->sort('name'); ?></th>
-			<th><?php echo $this->Paginator->sort('telephone'); ?></th>
-			<th><?php echo $this->Paginator->sort('status_id'); ?></th>
-			<th><?php echo $this->Paginator->sort('created'); ?></th>
-			<th><?php echo $this->Paginator->sort('modified'); ?></th>
-			<th><?php echo $this->Paginator->sort('description'); ?></th>
+			<th><?php echo $this->Paginator->sort('Folio'); ?></th>
+			<th><?php echo $this->Paginator->sort('Nombre Cliente'); ?></th>
+			<th><?php echo $this->Paginator->sort('Telefóno'); ?></th>
+			<th><?php echo $this->Paginator->sort('Staus'); ?></th>
+			<th><?php echo $this->Paginator->sort('Descripción'); ?></th>
 			<th><?php echo $this->Paginator->sort('foto'); ?></th>
 			<th><?php echo $this->Paginator->sort('foto_dir'); ?></th>
-			<th class="actions"><?php echo __('Actions'); ?></th>
+			<th class="actions"><?php echo __('Acciones'); ?></th>
 	</tr>
 	</thead>
 	<tbody>
@@ -26,15 +24,13 @@
 		<td>
 			<?php echo $this->Html->link($work['Status']['name'], array('controller' => 'statuses', 'action' => 'view', $work['Status']['id'])); ?>
 		</td>
-		<td><?php echo h($work['Work']['created']); ?>&nbsp;</td>
-		<td><?php echo h($work['Work']['modified']); ?>&nbsp;</td>
 		<td><?php echo h($work['Work']['description']); ?>&nbsp;</td>
 		<td><?php echo h($work['Work']['foto']); ?>&nbsp;</td>
 		<td><?php echo h($work['Work']['foto_dir']); ?>&nbsp;</td>
 		<td class="actions">
-			<?php echo $this->Html->link(__('View'), array('action' => 'view', $work['Work']['id'])); ?>
-			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $work['Work']['id'])); ?>
-			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $work['Work']['id']), array(), __('Are you sure you want to delete # %s?', $work['Work']['id'])); ?>
+			<?php echo $this->Html->link(__('Detalles'), array('action' => 'view', $work['Work']['id'])); ?>
+			<?php echo $this->Html->link(__('Editar'), array('action' => 'edit', $work['Work']['id'])); ?>
+			<?php echo $this->Form->postLink(__('Eliminar'), array('action' => 'delete', $work['Work']['id']), array(), __('Está seguro de eliminar el trabajo con folio '.$work['Work']['folio'].' ?', $work['Work']['id'])); ?>
 		</td>
 	</tr>
 <?php endforeach; ?>

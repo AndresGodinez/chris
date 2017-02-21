@@ -1,25 +1,30 @@
-<div class="users form">
+<div class="users form col-md-6">
 <?php echo $this->Form->create('User'); ?>
+
 	<fieldset>
-		<legend><?php echo __('Edit User'); ?></legend>
+		<legend><?php echo 'Actualizar Usuario'; ?></legend>
 	<?php
 		echo $this->Form->input('id');
-		echo $this->Form->input('username');
-		echo $this->Form->input('email');
-		echo $this->Form->input('isActive');
-		echo $this->Form->input('role_id');
-		echo $this->Form->input('fecha_nac');
-		echo $this->Form->input('gender_id');
-		echo $this->Form->input('address');
-		echo $this->Form->input('telephone');
-		echo $this->Form->input('extension');
-		echo $this->Form->input('foto');
-		echo $this->Form->input('foto_dir');
-		echo $this->Form->input('job_id');
-		echo $this->Form->input('departament_id');
+		$variables= array(
+			'1'=>'Activo',
+			'2'=>'Inactivo'
+			);
+		echo $this->Form->input('isActive',
+			array(
+				'class'=>'form-control',
+				'label'=>'Activo',
+				'options'=>$variables
+				)
+			);
+		echo $this->element('users-form');
 	?>
 	</fieldset>
-<?php echo $this->Form->end(__('Submit')); ?>
+<?php echo $this->Form->end(
+	array(
+		'class'=>'btn btn-success',
+		'label'=>'Actualizar'
+		)
+	); ?>
 </div>
 <div class="actions">
 	<h3><?php echo __('Actions'); ?></h3>

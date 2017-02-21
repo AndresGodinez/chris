@@ -1,15 +1,21 @@
 <div class="departaments form">
 <?php echo $this->Form->create('Departament'); ?>
+	<div class="col-md-6">
 	<fieldset>
-		<legend><?php echo __('Edit Departament'); ?></legend>
+		<legend><?php echo 'Actualizar Departamento'; ?></legend>
 	<?php
 		echo $this->Form->input('id');
-		echo $this->Form->input('name');
-		echo $this->Form->input('user_id');
-		echo $this->Form->input('company_id');
+		echo $this->element('departaments-form');
 	?>
 	</fieldset>
-<?php echo $this->Form->end(__('Submit')); ?>
+	<br>
+<?php echo $this->Form->end(
+		array(
+			'label'=>'Actualizar',
+			'class'=>'btn btn-success'
+			)
+		); ?>
+</div>
 </div>
 <div class="actions">
 	<h3><?php echo __('Actions'); ?></h3>

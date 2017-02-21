@@ -1,13 +1,13 @@
-<div class="jobs form">
+<div class="jobs form col-md-6">
 <?php echo $this->Form->create('Job'); ?>
 	<fieldset>
-		<legend><?php echo __('Add Job'); ?></legend>
+		<legend><?php echo 'Agregar Puesto'; ?></legend>
 	<?php
-		echo $this->Form->input('name');
-		echo $this->Form->input('departament_id');
+		echo $this->element('jobs-form');
 	?>
 	</fieldset>
-<?php echo $this->Form->end(__('Submit')); ?>
+	<br>
+<?php echo $this->Form->end(array('label'=>'Alta','class'=>'btn btn-success')); ?>
 </div>
 <div class="actions">
 	<h3><?php echo __('Actions'); ?></h3>

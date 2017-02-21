@@ -78,7 +78,7 @@ class Departament extends AppModel {
 			'finderQuery' => '',
 			'counterQuery' => ''
 		),
-		'User' => array(
+		'Users' => array(
 			'className' => 'User',
 			'foreignKey' => 'departament_id',
 			'dependent' => false,

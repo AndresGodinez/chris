@@ -1,14 +1,19 @@
-<div class="jobs form">
+<div class="jobs form col-md-6">
 <?php echo $this->Form->create('Job'); ?>
 	<fieldset>
-		<legend><?php echo __('Edit Job'); ?></legend>
+		<legend><?php echo 'Editar puesto'; ?></legend>
 	<?php
 		echo $this->Form->input('id');
-		echo $this->Form->input('name');
-		echo $this->Form->input('departament_id');
+		echo $this->element('jobs-form');
 	?>
 	</fieldset>
-<?php echo $this->Form->end(__('Submit')); ?>
+	<br>
+
+<?php echo $this->Form->end(
+	array(
+		'class'=>'btn btn-success',
+		'label'=>'Actualizar')
+); ?>
 </div>
 <div class="actions">
 	<h3><?php echo __('Actions'); ?></h3>

@@ -1,12 +1,13 @@
-<div class="genders form">
+<div class="genders form col-md-6">
 <?php echo $this->Form->create('Gender'); ?>
 	<fieldset>
-		<legend><?php echo __('Add Gender'); ?></legend>
+		<legend><?php echo 'Agregar Genero'; ?></legend>
 	<?php
-		echo $this->Form->input('name');
+		echo $this->Form->input('name', array('class'=>'form-control', 'label'=>'Nombre', 'Placeholder'=>'Genero'));
 	?>
 	</fieldset>
-<?php echo $this->Form->end(__('Submit')); ?>
+	<br>
+<?php echo $this->Form->end(array('class'=>'btn btn-success', 'label'=>'Alta')); ?>
 </div>
 <div class="actions">
 	<h3><?php echo __('Actions'); ?></h3>

@@ -1,19 +1,14 @@
-<div class="works form">
+<div class="works form col-md-6">
 <?php echo $this->Form->create('Work'); ?>
 	<fieldset>
-		<legend><?php echo __('Edit Work'); ?></legend>
+		<legend><?php echo 'Actualizar Trabajo'; ?></legend>
 	<?php
 		echo $this->Form->input('id');
-		echo $this->Form->input('folio');
-		echo $this->Form->input('name');
-		echo $this->Form->input('telephone');
-		echo $this->Form->input('status_id');
-		echo $this->Form->input('description');
-		echo $this->Form->input('foto');
-		echo $this->Form->input('foto_dir');
+		echo $this->element('works-form');
 	?>
 	</fieldset>
-<?php echo $this->Form->end(__('Submit')); ?>
+	<br>
+<?php echo $this->Form->end(array('label'=>'Actualizar', 'class'=>'btn btn-success')); ?>
 </div>
 <div class="actions">
 	<h3><?php echo __('Actions'); ?></h3>

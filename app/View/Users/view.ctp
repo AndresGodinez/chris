@@ -1,5 +1,5 @@
-<div class="users view">
-<h2><?php echo __('User'); ?></h2>
+<div class="users view well">
+<h2><?php echo $user['User']['username'].' '.$user['User']['name']; ?></h2>
 	<dl>
 		<dt><?php echo __('Id'); ?></dt>
 		<dd>

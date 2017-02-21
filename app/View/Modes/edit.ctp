@@ -1,13 +1,13 @@
-<div class="modes form">
+<div class="modes form col-md-6">
 <?php echo $this->Form->create('Mode'); ?>
 	<fieldset>
-		<legend><?php echo __('Edit Mode'); ?></legend>
+		<legend><?php echo 'Actualizar Status Empresas'; ?></legend>
 	<?php
 		echo $this->Form->input('id');
-		echo $this->Form->input('name');
+		echo $this->Form->input('name', array('class'=>'form-control', 'label'=>'Nombre del status', 'placeholder'=>'Nombre Status'));
 	?>
 	</fieldset>
-<?php echo $this->Form->end(__('Submit')); ?>
+<?php echo $this->element('actualizar-btn'); ?>
 </div>
 <div class="actions">
 	<h3><?php echo __('Actions'); ?></h3>
