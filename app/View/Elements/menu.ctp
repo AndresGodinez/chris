@@ -8,7 +8,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <?php echo $this->Html->link('Restaurante', array('controller' => 'platillos', 'action' => 'index'), array('class' => 'navbar-brand' )); ?>
+          <?php echo $this->Html->link('ProductionLn', array('controller' => 'jobs', 'action' => 'index'), array('class' => 'navbar-brand' )); ?>
           
 
         </div>
@@ -26,28 +26,28 @@
             <?php //endif; ?>
 
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Meseros <span class="caret"></span></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Compañías <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
-                <li><?php echo $this->Html->link('Lista Meseros', array('controller' => 'meseros', 'action' => 'index')) ?></li>
-                <li><?php echo $this->Html->link('Nuevo Mesero', array('controller' => 'meseros', 'action' => 'add')) ?></li>
+                <li><?php echo $this->Html->link('Lista Compañias', array('controller' => 'companies', 'action' => 'index')) ?></li>
+                <li><?php echo $this->Html->link('Nueva Compañia', array('controller' => 'companies', 'action' => 'add')) ?></li>
               </ul>
             </li>
 
             <?php //if($current_user['role'] == 'admin'): ?>
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Cocineros <span class="caret"></span></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Departamentos <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
-                <li><?php echo $this->Html->link('Lista Cocineros', array('controller' => 'cocineros', 'action' => 'index')) ?></li>
-                <li><?php echo $this->Html->link('Nuevo Cocinero', array('controller' => 'cocineros', 'action' => 'add')) ?></li>
+                <li><?php echo $this->Html->link('Lista Departamentos', array('controller' => 'departaments', 'action' => 'index')) ?></li>
+                <li><?php echo $this->Html->link('Nuevo Departamento', array('controller' => 'departaments', 'action' => 'add')) ?></li>
               </ul>
             </li>
             <?php //endif; ?>
 
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Platillos <span class="caret"></span></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Puestos <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
-                <li><?php echo $this->Html->link('Lista Platillos', array('controller' => 'platillos', 'action' => 'index')) ?></li>
-                <li><?php echo $this->Html->link('Nuevo Platillo', array('controller' => 'platillos', 'action' => 'add')) ?></li>
+                <li><?php echo $this->Html->link('Lista Puestos', array('controller' => 'jobs', 'action' => 'index')) ?></li>
+                <li><?php echo $this->Html->link('Nuevo Puesto', array('controller' => 'jobs', 'action' => 'add')) ?></li>
                 <li><?php echo $this->Html->link('Buscar Platillo', array('controller' => 'platillos', 'action' => 'search')) ?></li>
                 <li class="divider"></li>
                 <li class="dropdown-header">Categorías</li>
@@ -57,14 +57,6 @@
             </li>
 
 
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Mesas <span class="caret"></span></a>
-              <ul class="dropdown-menu" role="menu">
-                <li><?php echo $this->Html->link('Lista Mesas', array('controller' => 'mesas', 'action' => 'index')) ?></li>
-                <li><?php echo $this->Html->link('Nueva Mesa', array('controller' => 'mesas', 'action' => 'add')) ?></li>
-           
-              </ul>
-            </li>
             
             <?php //if($current_user['role'] == 'admin'): ?>
             <li><?php echo $this->Html->link('Lista de Órdenes', array('controller' => 'ordens', 'action' => 'index')); ?></li>
