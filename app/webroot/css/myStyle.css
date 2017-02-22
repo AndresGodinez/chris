@@ -2,7 +2,9 @@ body {
   padding-top: 70px;
   padding-bottom: 30px;
 }
-
+#flashMessage{
+  animation-duration:5s;
+}
 .theme-dropdown .dropdown-menu {
   position: static;
   display: block;

@@ -30,7 +30,7 @@ $cakeDescription = __d('PLn', 'ProductionLn');
 	<?php
 		echo $this->Html->meta('icon');
 
-		echo $this->Html->css(array('myStyle.css' ,'bootstrap.min', 'bootstrap-theme.min', 'fileinput.min', 'jquery-ui.min'));
+		echo $this->Html->css(array( 'animate','bootstrap.min', 'bootstrap-theme.min', 'fileinput.min', 'jquery-ui.min','myStyle'));
 		echo $this->Html->script(array('jquery.min', 'bootstrap.min', 'fileinput.min', 'jquery-ui.min', 'search'));
 
 		echo $this->fetch('meta');

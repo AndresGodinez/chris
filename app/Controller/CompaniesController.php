@@ -13,7 +13,13 @@ class CompaniesController extends AppController {
  *
  * @var array
  */
-	public $components = array('Paginator');
+
+	public $paginate=array(
+		'limit'=>20,
+		'order'=>array(
+			'Companies.id'=>'asc'
+			)
+		);
 
 /**
  * index method
@@ -22,7 +28,12 @@ class CompaniesController extends AppController {
  */
 	public function index() {
 		$this->Company->recursive = 0;
-		$this->set('companies', $this->Paginator->paginate());
+		$this->paginate['Companies']['limit']=20;
+		$this->paginate['Companies']['order']= array('Companies.id'=>'asc');
+		// $this->paginate['Companies']['conditions']= array('Companies.id'=>1);
+		// $this->Paginator->settings=$this->paginate;
+
+		$this->set('companies', $this->paginate());
 	}
 
 /**
@@ -34,7 +45,7 @@ class CompaniesController extends AppController {
  */
 	public function view($id = null) {
 		if (!$this->Company->exists($id)) {
-			throw new NotFoundException(__('Invalid company'));
+			throw new NotFoundException(__('Datos invalidos'));
 		}
 		$options = array('conditions' => array('Company.' . $this->Company->primaryKey => $id));
 		$this->set('company', $this->Company->find('first', $options));
@@ -49,10 +60,18 @@ class CompaniesController extends AppController {
 		if ($this->request->is('post')) {
 			$this->Company->create();
 			if ($this->Company->save($this->request->data)) {
-				$this->Session->setFlash(__('The company has been saved.'));
+				$this->Session->setFlash('Empresa Agregada.','default',
+					array(
+						'class'=>'alert alert-info animated fadeOut'
+						)
+
+					);
 				return $this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The company could not be saved. Please, try again.'));
+				$this->Session->setFlash('La empresa no pudo ser guardad', 'default', 
+					array(
+						'class'=>'alert alert-danger animated fadeOut'
+						));
 			}
 		}
 		$modes = $this->Company->Mode->find('list');
@@ -68,14 +87,19 @@ class CompaniesController extends AppController {
  */
 	public function edit($id = null) {
 		if (!$this->Company->exists($id)) {
-			throw new NotFoundException(__('Invalid company'));
+			throw new NotFoundException('Empresa Invalida');
 		}
 		if ($this->request->is(array('post', 'put'))) {
 			if ($this->Company->save($this->request->data)) {
-				$this->Session->setFlash(__('The company has been saved.'));
+				$this->Session->setFlash('La empresa se ha actualizado','default', 
+					array(
+						'class'=>'alert alert-info animated fadeOut'
+						)
+					);
 				return $this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The company could not be saved. Please, try again.'));
+				$this->Session->setFlash('La empresa no pudo ser guardad', 'default',array(
+					'class'=>'alert alert-danger animated fadeOut'));
 			}
 		} else {
 			$options = array('conditions' => array('Company.' . $this->Company->primaryKey => $id));
@@ -95,13 +119,16 @@ class CompaniesController extends AppController {
 	public function delete($id = null) {
 		$this->Company->id = $id;
 		if (!$this->Company->exists()) {
-			throw new NotFoundException(__('Invalid company'));
+			throw new NotFoundException('Empresa invalida');
 		}
 		$this->request->allowMethod('post', 'delete');
 		if ($this->Company->delete()) {
-			$this->Session->setFlash(__('The company has been deleted.'));
+			$this->Session->setFlash('La empresa ha sido eliminada', 'default', array(
+					'class'=>'alert alert-info animated fadeOut'
+				));
 		} else {
-			$this->Session->setFlash(__('The company could not be deleted. Please, try again.'));
+			$this->Session->setFlash('La empresa no pudo ser eliminada','default',array(
+				'class'=>'alert alert-danger animated fadeOut'));
 		}
 		return $this->redirect(array('action' => 'index'));
 	}

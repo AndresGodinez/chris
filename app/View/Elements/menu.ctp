@@ -58,6 +58,8 @@
                 <li><?php echo $this->Html->link('Nuevo Genero', array('controller' => 'genders', 'action' => 'add')) ?></li>
                 <li><?php echo $this->Html->link('Roles', array('controller' => 'roles', 'action' => 'index')) ?></li>
                 <li><?php echo $this->Html->link('Nuevo Rol', array('controller' => 'roles', 'action' => 'add')) ?></li> 
+                 <li><?php echo $this->Html->link('Modos Empresa', array('controller' => 'modes', 'action' => 'index')) ?></li>
+                <li><?php echo $this->Html->link('Nuevo Modo Empresa', array('controller' => 'modes', 'action' => 'add')) ?></li> 
 
 
                 <li><?php echo $this->Html->link('Buscar Platillo', array('controller' => 'platillos', 'action' => 'search')) ?></li>

@@ -1,8 +1,8 @@
-<div class="companies form">
+<div class="companies form col-md-6">
 <?php echo $this->Form->create('Company'); ?>
 	<fieldset>
 		<legend><?php echo 'Nueva Empresa'; ?></legend>
-		<div class='col-md-6'>
+
 	<?php
 		echo $this->element('companies_form');
 	?>
@@ -14,7 +14,7 @@
 			'class'=> 'btn btn-success'
 			)
 		); ?>
-	</div>
+
 </div>
 <div class="actions">
 	<h3><?php echo __('Actions'); ?></h3>

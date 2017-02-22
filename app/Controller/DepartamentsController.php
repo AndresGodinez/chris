@@ -13,7 +13,12 @@ class DepartamentsController extends AppController {
  *
  * @var array
  */
-	public $components = array('Paginator');
+	public $paginate=array(
+		'limit'=>1,
+		'order'=>array(
+			'Departaments.id'=>'asc'
+			)
+		);
 
 /**
  * index method
@@ -22,7 +27,12 @@ class DepartamentsController extends AppController {
  */
 	public function index() {
 		$this->Departament->recursive = 0;
-		$this->set('departaments', $this->Paginator->paginate());
+		$this->paginate['Departaments']['limit']=1;
+		$this->paginate['Departaments']['order']=array('Departaments.id'=>'asc');
+		// $this->paginate['Departaments']['conditions']=array('Departaments.active'=>1);
+
+
+		$this->set('departaments', $this->paginate());
 	}
 
 /**
