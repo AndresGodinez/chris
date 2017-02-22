@@ -1,5 +1,5 @@
 <div class="statuses index">
-	<h2><?php echo __('Statuses'); ?></h2>
+	<h2><?php echo 'Estados de Trabajo'; ?></h2>
 	<table class="table table-striped table-responsive table-bordered">
 	<thead>
 	<tr>
@@ -18,9 +18,9 @@
 		<td><?php echo h($status['Status']['created']); ?>&nbsp;</td>
 		<td><?php echo h($status['Status']['modified']); ?>&nbsp;</td>
 		<td class="actions">
-			<?php echo $this->Html->link(__('View'), array('action' => 'Detalles', $status['Status']['id'])); ?>
-			<?php echo $this->Html->link(__('Edit'), array('action' => 'Editar', $status['Status']['id'])); ?>
-			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'Eliminar', $status['Status']['id']), array(), __('Esta seguro de eliminar el status '.$status['Status']['name'].'?', $status['Status']['id'])); ?>
+			<?php echo $this->Html->link(__('Detalles'), array('action' => 'view', $status['Status']['id'])); ?>
+			<?php echo $this->Html->link(__('Actualizar'), array('action' => 'edit', $status['Status']['id'])); ?>
+			<?php echo $this->Form->postLink(__('Eliminar'), array('action' => 'delete', $status['Status']['id']), array(), __('Esta seguro de eliminar el status '.$status['Status']['name'].'?', $status['Status']['id'])); ?>
 		</td>
 	</tr>
 <?php endforeach; ?>

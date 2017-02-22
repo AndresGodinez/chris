@@ -1,17 +1,18 @@
-<div class="statuses form">
+<div class="statuses form col-md-6">
 <?php echo $this->Form->create('Status'); ?>
 	<fieldset>
-		<legend><?php echo __('Edit Status'); ?></legend>
+		<legend><?php echo 'Actualizar estado de trabajo'; ?></legend>
 	<?php
 		echo $this->Form->input('id');
 		echo $this->Form->input('name', array(
-			'class'=>'form-control'
-			'label'=>'nombre'
+			'class'=>'form-control',
+			'label'=>'nombre',
 			'placeholder'=>'Nombre'
 			));
 	?>
 	</fieldset>
-<?php echo $this->Form->end(array('class'=>'btn btn-success', 'label'=>'actualizar')); ?>
+	<br>
+<?php echo $this->Form->end(array('class'=>'btn btn-success', 'label'=>'Actualizar')); ?>
 </div>
 <div class="actions">
 	<h3><?php echo __('Actions'); ?></h3>

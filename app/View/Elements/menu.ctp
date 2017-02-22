@@ -14,6 +14,13 @@
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
+          <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Empresas <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><?php echo $this->Html->link('Lista Empresas', array('controller' => 'companies', 'action' => 'index')) ?></li>
+                <li><?php echo $this->Html->link('Nueva Empresa', array('controller' => 'companies', 'action' => 'add')) ?></li>
+              </ul>
+            </li>
 
             <?php //if($current_user['role'] == 'admin'): ?>
             <li class="dropdown">
@@ -25,13 +32,7 @@
             </li>
             <?php //endif; ?>
 
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Compañías <span class="caret"></span></a>
-              <ul class="dropdown-menu" role="menu">
-                <li><?php echo $this->Html->link('Lista Compañias', array('controller' => 'companies', 'action' => 'index')) ?></li>
-                <li><?php echo $this->Html->link('Nueva Compañia', array('controller' => 'companies', 'action' => 'add')) ?></li>
-              </ul>
-            </li>
+            
 
             <?php //if($current_user['role'] == 'admin'): ?>
             <li class="dropdown">
@@ -39,15 +40,26 @@
               <ul class="dropdown-menu" role="menu">
                 <li><?php echo $this->Html->link('Lista Departamentos', array('controller' => 'departaments', 'action' => 'index')) ?></li>
                 <li><?php echo $this->Html->link('Nuevo Departamento', array('controller' => 'departaments', 'action' => 'add')) ?></li>
+                <li class="divider"></li>
+                <li><?php echo $this->Html->link('Lista Puestos', array('controller'=>'jobs','action'=>'index'))?></li>
+                 <li><?php echo $this->Html->link('Nuevo Puesto', array('controller'=>'jobs','action'=>'add'))?></li>
+                <li class="divider"></li> <!-- divider -->
+                <li><?php echo $this->Html->link('Estados de trabajo', array('controller'=>'statuses','action'=>'index'))?></li>
+                 <li><?php echo $this->Html->link('Nuevo estado de trabajo', array('controller'=>'statuses','action'=>'add'))?></li>
+
               </ul>
             </li>
             <?php //endif; ?>
 
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Puestos <span class="caret"></span></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Configuración <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
-                <li><?php echo $this->Html->link('Lista Puestos', array('controller' => 'jobs', 'action' => 'index')) ?></li>
-                <li><?php echo $this->Html->link('Nuevo Puesto', array('controller' => 'jobs', 'action' => 'add')) ?></li>
+                <li><?php echo $this->Html->link('Generos', array('controller' => 'genders', 'action' => 'index')) ?></li>
+                <li><?php echo $this->Html->link('Nuevo Genero', array('controller' => 'genders', 'action' => 'add')) ?></li>
+                <li><?php echo $this->Html->link('Roles', array('controller' => 'roles', 'action' => 'index')) ?></li>
+                <li><?php echo $this->Html->link('Nuevo Rol', array('controller' => 'roles', 'action' => 'add')) ?></li> 
+
+
                 <li><?php echo $this->Html->link('Buscar Platillo', array('controller' => 'platillos', 'action' => 'search')) ?></li>
                 <li class="divider"></li>
                 <li class="dropdown-header">Categorías</li>
@@ -59,7 +71,7 @@
 
             
             <?php //if($current_user['role'] == 'admin'): ?>
-            <li><?php echo $this->Html->link('Lista de Órdenes', array('controller' => 'ordens', 'action' => 'index')); ?></li>
+            <li><?php echo $this->Html->link('Trabajos', array('controller' => 'works', 'action' => 'index')); ?></li>
             <?php //endif; ?>
           </ul>
           
@@ -70,7 +82,7 @@
           <?php echo $this->Form->button('Buscar', array('div' => false, 'class' => 'btn btn-primary')); ?>
           <?php echo $this->Form->end(); ?>
           
-          <?php echo $this->Html->link('Pedidos', array('controller' => 'pedidos', 'action' => 'view'), array('class' => 'btn btn-success navbar-btn') ); ?>
+          <?php //echo $this->Html->link('Pedidos', array('controller' => 'pedidos', 'action' => 'view'), array('class' => 'btn btn-success navbar-btn') ); ?>
           
             <ul class="nav navbar-nav navbar-right">
               <li>

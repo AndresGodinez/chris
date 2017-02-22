@@ -18,9 +18,9 @@
 		<td><?php echo h($role['Role']['created']); ?>&nbsp;</td>
 		<td><?php echo h($role['Role']['modified']); ?>&nbsp;</td>
 		<td class="actions">
-			<?php echo $this->Html->link(__('View'), array('action' => 'Detalles', $role['Role']['id'])); ?>
-			<?php echo $this->Html->link(__('Edit'), array('action' => 'Editar', $role['Role']['id'])); ?>
-			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'Eliminar', $role['Role']['id']), array(), __('Esta seguro de eliminar el role '.$role['Role']['name'].'?', $role['Role']['id'])); ?>
+			<?php echo $this->Html->link(__('Detalles'), array('action' => 'view', $role['Role']['id'])); ?>
+			<?php echo $this->Html->link(__('Editar'), array('action' => 'edit', $role['Role']['id'])); ?>
+			<?php echo $this->Form->postLink(__('Eliminar'), array('action' => 'delete', $role['Role']['id']), array(), __('Esta seguro de eliminar el role '.$role['Role']['name'].'?', $role['Role']['id'])); ?>
 		</td>
 	</tr>
 <?php endforeach; ?>
