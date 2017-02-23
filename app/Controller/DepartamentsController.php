@@ -14,7 +14,7 @@ class DepartamentsController extends AppController {
  * @var array
  */
 	public $paginate=array(
-		'limit'=>1,
+		'limit'=>20,
 		'order'=>array(
 			'Departaments.id'=>'asc'
 			)
@@ -27,7 +27,7 @@ class DepartamentsController extends AppController {
  */
 	public function index() {
 		$this->Departament->recursive = 0;
-		$this->paginate['Departaments']['limit']=1;
+		$this->paginate['Departaments']['limit']=20;
 		$this->paginate['Departaments']['order']=array('Departaments.id'=>'asc');
 		// $this->paginate['Departaments']['conditions']=array('Departaments.active'=>1);
 

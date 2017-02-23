@@ -1,93 +1,107 @@
-<div class="genders view">
-<h2><?php echo __('Gender'); ?></h2>
-	<dl>
-		<dt><?php echo __('Id'); ?></dt>
-		<dd>
-			<?php echo h($gender['Gender']['id']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Name'); ?></dt>
-		<dd>
-			<?php echo h($gender['Gender']['name']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Created'); ?></dt>
-		<dd>
-			<?php echo h($gender['Gender']['created']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Modified'); ?></dt>
-		<dd>
-			<?php echo h($gender['Gender']['modified']); ?>
-			&nbsp;
-		</dd>
-	</dl>
-</div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
+<div class="genders view well col-md-12">
+<h2><?php echo __('Generos'); ?></h2>
+	<div class="col-md-6">
+		<dl>
+			<dt><?php echo __('Id'); ?></dt>
+			<dd>
+				<?php echo h($gender['Gender']['id']); ?>
+				&nbsp;
+			</dd>
+			<dt><?php echo __('Name'); ?></dt>
+			<dd>
+				<?php echo h($gender['Gender']['name']); ?>
+				&nbsp;
+			</dd>
+			<dt><?php echo __('Created'); ?></dt>
+			<dd>
+				<?php echo h($gender['Gender']['created']); ?>
+				&nbsp;
+			</dd>
+			<dt><?php echo __('Modified'); ?></dt>
+			<dd>
+				<?php echo h($gender['Gender']['modified']); ?>
+				&nbsp;
+			</dd>
+		</dl>
+	</div>
+
+<div class="actions col-md-6">
+	<dl><dt><?php echo __('Acciones'); ?></dt></dl>
 	<ul>
-		<li><?php echo $this->Html->link(__('Edit Gender'), array('action' => 'edit', $gender['Gender']['id'])); ?> </li>
-		<li><?php echo $this->Form->postLink(__('Delete Gender'), array('action' => 'delete', $gender['Gender']['id']), array(), __('Are you sure you want to delete # %s?', $gender['Gender']['id'])); ?> </li>
-		<li><?php echo $this->Html->link(__('List Genders'), array('action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Gender'), array('action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Users'), array('controller' => 'users', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New User'), array('controller' => 'users', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('Actualizar Genero'), array('action' => 'edit', $gender['Gender']['id'])); ?> </li>
+		<li><?php echo $this->Form->postLink(__('Eliminar Genero'), array('action' => 'delete', $gender['Gender']['id']), array(), __('esta seguro de eliminar el genero '.$gender['Gender']['name'].' ?', $gender['Gender']['id'])); ?> </li>
+		<li><?php echo $this->Html->link(__('Lista Generos'), array('action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('Nuevo Genero'), array('action' => 'add')); ?> </li>
 	</ul>
 </div>
-<div class="related">
-	<h3><?php echo __('Related Users'); ?></h3>
+</div>
+<div class="related col-md-12">
+	<h3><?php echo 'Usuarios Relacionados'; ?></h3>
+	<?php if (empty($gender['User'])){
+		echo "Aún no hay usuarios con este genero";
+		} ?>
 	<?php if (!empty($gender['User'])): ?>
-	<table cellpadding = "0" cellspacing = "0">
+<?php echo $this->element('table'); ?>
 	<tr>
 		<th><?php echo __('Id'); ?></th>
 		<th><?php echo __('Username'); ?></th>
-		<th><?php echo __('Email'); ?></th>
-		<th><?php echo __('IsActive'); ?></th>
-		<th><?php echo __('Role Id'); ?></th>
-		<th><?php echo __('Created'); ?></th>
-		<th><?php echo __('Modified'); ?></th>
-		<th><?php echo __('Fecha Nac'); ?></th>
-		<th><?php echo __('Gender Id'); ?></th>
-		<th><?php echo __('Address'); ?></th>
-		<th><?php echo __('Telephone'); ?></th>
-		<th><?php echo __('Extension'); ?></th>
-		<th><?php echo __('Foto'); ?></th>
-		<th><?php echo __('Foto Dir'); ?></th>
-		<th><?php echo __('Job Id'); ?></th>
-		<th><?php echo __('Departament Id'); ?></th>
+		<th><?php echo __('E-mail'); ?></th>
+		<th><?php echo __('Activo'); ?></th>
+		<th><?php echo __('Role'); ?></th>
+		<th><?php echo __('Telefóno'); ?></th>
+		<th><?php echo __('Extensión'); ?></th>
+		<th><?php echo __('Puesto'); ?></th>
+		<th><?php echo __('Departamento'); ?></th>
 		<th class="actions"><?php echo __('Actions'); ?></th>
 	</tr>
 	<?php foreach ($gender['User'] as $user): ?>
 		<tr>
 			<td><?php echo $user['id']; ?></td>
-			<td><?php echo $user['username']; ?></td>
+			<td><?php 
+				echo $this->Html->link($user['username'], array('controller'=>'users', 'action'=>'view',$user['id'])); 
+
+			?></td>
 			<td><?php echo $user['email']; ?></td>
-			<td><?php echo $user['isActive']; ?></td>
+			<td><?php 
+
+			 if($user['isActive']==1)
+			 {
+			 	echo "Activo";
+			 }
+			 else
+			 	{echo "Inactivo";}
+
+			  ?></td>
 			<td><?php echo $user['role_id']; ?></td>
-			<td><?php echo $user['created']; ?></td>
-			<td><?php echo $user['modified']; ?></td>
-			<td><?php echo $user['fecha_nac']; ?></td>
-			<td><?php echo $user['gender_id']; ?></td>
-			<td><?php echo $user['address']; ?></td>
 			<td><?php echo $user['telephone']; ?></td>
 			<td><?php echo $user['extension']; ?></td>
-			<td><?php echo $user['foto']; ?></td>
-			<td><?php echo $user['foto_dir']; ?></td>
-			<td><?php echo $user['job_id']; ?></td>
-			<td><?php echo $user['departament_id']; ?></td>
+			<td><?php 
+
+			foreach($puestos as $puesto)
+				if($user['job_id']==$puesto['Job']['id'])	
+				{
+					echo $this->Html->link($puesto['Job']['name'], array('controller'=>'jobs', 'action'=>'view',$puesto['Job']['id']));
+				}
+			// echo $user['job_id']; 
+
+
+			?></td>
+			<td><?php 
+				foreach($puestos as $puesto)
+					if($user['departament_id']==$puesto['Departament']['id'])
+					{
+						echo $this->Html->link($puesto['Departament']['name'], array('controller'=>'departaments', 'action'=>'view',$puesto['Departament']['id']));
+
+					}
+
+
+			?></td>
 			<td class="actions">
-				<?php echo $this->Html->link(__('View'), array('controller' => 'users', 'action' => 'view', $user['id'])); ?>
-				<?php echo $this->Html->link(__('Edit'), array('controller' => 'users', 'action' => 'edit', $user['id'])); ?>
-				<?php echo $this->Form->postLink(__('Delete'), array('controller' => 'users', 'action' => 'delete', $user['id']), array(), __('Are you sure you want to delete # %s?', $user['id'])); ?>
+				<?php echo $this->Html->link(__('Detalles'), array('controller' => 'users', 'action' => 'view', $user['id'])); ?>
+				<?php echo $this->Html->link(__('Editar'), array('controller' => 'users', 'action' => 'edit', $user['id'])); ?>
+				<?php echo $this->Form->postLink(__('Eliminar'), array('controller' => 'users', 'action' => 'delete', $user['id']), array(), __('Are you sure you want to delete # %s?', $user['id'])); ?>
 			</td>
 		</tr>
 	<?php endforeach; ?>
 	</table>
 <?php endif; ?>
-
-	<div class="actions">
-		<ul>
-			<li><?php echo $this->Html->link(__('New User'), array('controller' => 'users', 'action' => 'add')); ?> </li>
-		</ul>
-	</div>
-</div>

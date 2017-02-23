@@ -7,12 +7,12 @@
 			<?php echo h($departament['Departament']['id']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Name'); ?></dt>
+		<dt><?php echo __('Nombre'); ?></dt>
 		<dd>
 			<?php echo h($departament['Departament']['name']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('User'); ?></dt>
+		<dt><?php echo __('Jefe Departamento'); ?></dt>
 		<dd>
 			<?php echo $this->Html->link($departament['User']['username'], array('controller' => 'users', 'action' => 'view', $departament['User']['id'])); ?>
 			&nbsp;
@@ -21,17 +21,17 @@
 	</div>
 	<div class="col-md-4">
 	<dl>
-		<dt><?php echo __('Created'); ?></dt>
+		<dt><?php echo __('Creado'); ?></dt>
 		<dd>
 			<?php echo h($departament['Departament']['created']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Modified'); ?></dt>
+		<dt><?php echo __('Modificado'); ?></dt>
 		<dd>
 			<?php echo h($departament['Departament']['modified']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Company'); ?></dt>
+		<dt><?php echo __('Empresa'); ?></dt>
 		<dd>
 			<?php echo $this->Html->link($departament['Company']['name'], array('controller' => 'companies', 'action' => 'view', $departament['Company']['id'])); ?>
 			&nbsp;

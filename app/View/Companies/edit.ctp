@@ -15,17 +15,18 @@
 		)
 	); ?>
 </div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
+<div class="col-md-1"></div>
+<div class="actions col-md-2">
+	<h3><?php echo __('Acciones'); ?></h3>
 	<ul>
 
-		<li><?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $this->Form->value('Company.id')), array(), __('Are you sure you want to delete # %s?', $this->Form->value('Company.id'))); ?></li>
-		<li><?php echo $this->Html->link(__('List Companies'), array('action' => 'index')); ?></li>
-		<li><?php echo $this->Html->link(__('List Modes'), array('controller' => 'modes', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Mode'), array('controller' => 'modes', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Payments'), array('controller' => 'payments', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Payment'), array('controller' => 'payments', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Departaments'), array('controller' => 'departaments', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Departament'), array('controller' => 'departaments', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Form->postLink(__('Eliminar'), array('action' => 'delete', $this->Form->value('Company.id')), array(), __('Esta seguro de eliminar la empresa '.$this->request->data['Company']['name'], $this->Form->value('Company.id'))); ?></li>
+		<li><?php echo $this->Html->link(__('Lista Empresas'), array('action' => 'index')); ?></li>
+		<li><?php echo $this->Html->link(__('Lista Estatus Empresa'), array('controller' => 'modes', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('Nuevo Estatus de Empresa'), array('controller' => 'modes', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('Lista Pagos'), array('controller' => 'payments', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('Nuevo Pago'), array('controller' => 'payments', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('Lista Departamentos'), array('controller' => 'departaments', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('Nuevo Departamento'), array('controller' => 'departaments', 'action' => 'add')); ?> </li>
 	</ul>
 </div>

@@ -7,7 +7,7 @@
 ?>
 <div id="contenedor-empresa">
 	<?php echo $this->element('progress'); ?>
-	<div class="companies index">
+	<div class="companies index col-md-12">
 		<h2><?php echo 'Empresas'; ?></h2>
 		<table class='table table-striped table-bordered'>
 		<thead>

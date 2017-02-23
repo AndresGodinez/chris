@@ -60,9 +60,7 @@
                 <li><?php echo $this->Html->link('Nuevo Rol', array('controller' => 'roles', 'action' => 'add')) ?></li> 
                  <li><?php echo $this->Html->link('Modos Empresa', array('controller' => 'modes', 'action' => 'index')) ?></li>
                 <li><?php echo $this->Html->link('Nuevo Modo Empresa', array('controller' => 'modes', 'action' => 'add')) ?></li> 
-
-
-                <li><?php echo $this->Html->link('Buscar Platillo', array('controller' => 'platillos', 'action' => 'search')) ?></li>
+                <li><?php // busqueda echo $this->Html->link('Buscar Platillo', array('controller' => 'platillos', 'action' => 'search')) ?></li>
                 <li class="divider"></li>
                 <li class="dropdown-header">Categorías</li>
                 <li><?php echo $this->Html->link('Lista Categorías', array('controller' => 'categoria_platillos', 'action' => 'index')) ?></li>
@@ -73,7 +71,15 @@
 
             
             <?php //if($current_user['role'] == 'admin'): ?>
-            <li><?php echo $this->Html->link('Trabajos', array('controller' => 'works', 'action' => 'index')); ?></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Trabajos <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><?php echo $this->Html->link('Lista Trabajos', array('controller' => 'works', 'action' => 'index')) ?></li>
+                <li><?php echo $this->Html->link('Nuevo Trabajo', array('controller' => 'works', 'action' => 'add')) ?></li>
+                <li class="divider"></li>
+
+              </ul>
+            </li>
             <?php //endif; ?>
           </ul>
           

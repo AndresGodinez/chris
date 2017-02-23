@@ -13,7 +13,12 @@ class JobsController extends AppController {
  *
  * @var array
  */
-	public $components = array('Paginator');
+	public $paginate=array(
+		'limit'=>20,
+		'order'=>array(
+			'Jobs.id'=>'asc'
+			)
+		);
 
 /**
  * index method
@@ -22,7 +27,11 @@ class JobsController extends AppController {
  */
 	public function index() {
 		$this->Job->recursive = 0;
-		$this->set('jobs', $this->Paginator->paginate());
+		$this->paginate['Jobs']['limit']=20;
+		$this->paginate['Jobs']['order']=array('Jobs.id'=>'asc');
+		// $this->paginate['Jobs']['conditions']=array('Departaments.active'=>1);
+
+		$this->set('jobs', $this->paginate());
 	}
 
 /**

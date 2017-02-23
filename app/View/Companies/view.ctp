@@ -131,7 +131,9 @@
 	<?php foreach ($company['Departament'] as $departament): ?>
 		<tr>
 			<td><?php echo $departament['id']; ?></td>
-			<td><?php echo $departament['name']; ?></td>
+			<td><?php 
+			 echo $this->Html->link($departament['name'], array('controller' => 'departaments', 'action' => 'view', $departament['id']));
+			?></td>
 			<td><?php echo $departament['created']; ?></td>
 			<td><?php echo $departament['modified']; ?></td>
 			<td class="actions">

@@ -13,7 +13,12 @@ class WorksController extends AppController {
  *
  * @var array
  */
-	public $components = array('Paginator');
+	public $paginate=array(
+		'limit'=>20,
+		'order'=>array(
+			'Works.status_id'=>'asc'
+			)
+		);
 
 /**
  * index method
@@ -22,7 +27,11 @@ class WorksController extends AppController {
  */
 	public function index() {
 		$this->Work->recursive = 0;
-		$this->set('works', $this->Paginator->paginate());
+		$this->paginate['Works']['limit']=20;
+		$this->paginate['Works']['order']= array('Woks.status_id'=>'asc');
+		// $this->paginate['Companies']['conditions']= array('Companies.id'=>1);
+		// $this->Paginator->settings=$this->paginate;
+		$this->set('works', $this->paginate());
 	}
 
 /**

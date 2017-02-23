@@ -26,6 +26,6 @@
 				));
 		echo $this->Form->input('status_id', array('class'=>'form-control', 'label'=>'Estatus'));
 		
-		echo $this->Form->input('foto');
-		echo $this->Form->input('foto_dir');
+		echo $this->Form->input('foto', array('type'=>'hidden'));
+		echo $this->Form->input('foto_dir',array('type'=>'hidden'));
 ?>

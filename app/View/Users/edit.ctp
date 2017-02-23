@@ -19,12 +19,9 @@
 		echo $this->element('users-form');
 	?>
 	</fieldset>
-<?php echo $this->Form->end(
-	array(
-		'class'=>'btn btn-success',
-		'label'=>'Actualizar'
-		)
-	); ?>
+<?php 
+	echo $this->element('actualizar-btn');
+?>
 </div>
 <div class="actions">
 	<h3><?php echo __('Actions'); ?></h3>

@@ -34,10 +34,13 @@ class GendersController extends AppController {
  */
 	public function view($id = null) {
 		if (!$this->Gender->exists($id)) {
-			throw new NotFoundException(__('Invalid gender'));
+			throw new NotFoundException(__('Datos invalidos'));
 		}
+		$this->loadModel('Job');
+		$puestos=$this->Job->find('all');
 		$options = array('conditions' => array('Gender.' . $this->Gender->primaryKey => $id));
 		$this->set('gender', $this->Gender->find('first', $options));
+		$this->set('puestos', $puestos);
 	}
 
 /**
