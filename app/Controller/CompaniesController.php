@@ -60,7 +60,8 @@ class CompaniesController extends AppController {
 		if ($this->request->is('post')) {
 			$this->Company->create();
 			if ($this->Company->save($this->request->data)) {
-				$this->Session->setFlash('Empresa Agregada.','default',
+				$this->Session->setFlash(
+				'Empresa Agregada.','default',
 					array(
 						'class'=>'alert alert-info animated fadeOut'
 						)

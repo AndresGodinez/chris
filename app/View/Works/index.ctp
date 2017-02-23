@@ -34,7 +34,7 @@
 			<td><?php echo h($work['Work']['description']); ?>&nbsp;</td>
 			<td class="actions">
 				<?php echo $this->Html->link(__('Detalles'), array('action' => 'view', $work['Work']['id'])); ?>
-				<?php echo $this->Html->link(__('Editar'), array('action' => 'edit', $work['Work']['id'])); ?>
+				<?php echo $this->Html->link(__('Actualizar'), array('action' => 'edit', $work['Work']['id'])); ?>
 				<?php echo $this->Form->postLink(__('Eliminar'), array('action' => 'delete', $work['Work']['id']), array(), __('Está seguro de eliminar el trabajo con folio '.$work['Work']['folio'].' ?', $work['Work']['id'])); ?>
 			</td>
 		</tr>

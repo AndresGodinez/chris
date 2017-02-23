@@ -1,5 +1,6 @@
-<div class="works view">
-<h2><?php echo __('Work'); ?></h2>
+<div class="works view col-md-12 well">
+<h2><?php echo 'Trabajo con folio '.$work['Work']['folio']; ?></h2>
+	<div class="col-md-4">
 	<dl>
 		<dt><?php echo __('Id'); ?></dt>
 		<dd>
@@ -11,21 +12,25 @@
 			<?php echo h($work['Work']['folio']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Name'); ?></dt>
+		<dt><?php echo __('Nombre Cliente'); ?></dt>
 		<dd>
 			<?php echo h($work['Work']['name']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Telephone'); ?></dt>
+		<dt><?php echo __('Telefóno'); ?></dt>
 		<dd>
 			<?php echo h($work['Work']['telephone']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Status'); ?></dt>
+		<dt><?php echo __('Proceso'); ?></dt>
 		<dd>
 			<?php echo $this->Html->link($work['Status']['name'], array('controller' => 'statuses', 'action' => 'view', $work['Status']['id'])); ?>
 			&nbsp;
 		</dd>
+		</dl>
+	</div>
+	<div class="col-md-4">
+	<dl>
 		<dt><?php echo __('Created'); ?></dt>
 		<dd>
 			<?php echo h($work['Work']['created']); ?>
@@ -52,15 +57,18 @@
 			&nbsp;
 		</dd>
 	</dl>
-</div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
+	</div>
+
+<div class="actions col-md-4">
+	<dl><dt><?php echo __('Acciones'); ?></dt></dl>
+	
 	<ul>
-		<li><?php echo $this->Html->link(__('Edit Work'), array('action' => 'edit', $work['Work']['id'])); ?> </li>
-		<li><?php echo $this->Form->postLink(__('Delete Work'), array('action' => 'delete', $work['Work']['id']), array(), __('Are you sure you want to delete # %s?', $work['Work']['id'])); ?> </li>
-		<li><?php echo $this->Html->link(__('List Works'), array('action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Work'), array('action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Statuses'), array('controller' => 'statuses', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Status'), array('controller' => 'statuses', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('Actualizar Trabajo'), array('action' => 'edit', $work['Work']['id'])); ?> </li>
+		<li><?php echo $this->Form->postLink(__('Eliminar Trabajo'), array('action' => 'delete', $work['Work']['id']), array(), __('Esta seguro de liminar el trabajo con folio'.$work['Work']['folio'].' ?', $work['Work']['id'])); ?> </li>
+		<li><?php echo $this->Html->link(__('Lista Trabajos'), array('action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('Nuevo Trabajo'), array('action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('Lista Estados de Trabajo'), array('controller' => 'statuses', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('Nuevo Estado de Trabajo'), array('controller' => 'statuses', 'action' => 'add')); ?> </li>
 	</ul>
+</div>
 </div>

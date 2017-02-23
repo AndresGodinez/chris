@@ -58,10 +58,17 @@ class WorksController extends AppController {
 		if ($this->request->is('post')) {
 			$this->Work->create();
 			if ($this->Work->save($this->request->data)) {
-				$this->Session->setFlash(__('The work has been saved.'));
+				$this->Session->setFlash(
+				'Trabajo Agregado','default',
+					array(
+						'class'=>'alert alert-info animated fadeOut'
+						)
+
+					);
 				return $this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The work could not be saved. Please, try again.'));
+				$this->Session->setFlash('El trabajo no pudo ser agregado intente nuevamente','default',array('class'=>'alert alert-danger animated fadeOut'
+					));
 			}
 		}
 		$statuses = $this->Work->Status->find('list');
@@ -77,14 +84,14 @@ class WorksController extends AppController {
  */
 	public function edit($id = null) {
 		if (!$this->Work->exists($id)) {
-			throw new NotFoundException(__('Invalid work'));
+			throw new NotFoundException('Busqueda inválida');
 		}
 		if ($this->request->is(array('post', 'put'))) {
 			if ($this->Work->save($this->request->data)) {
-				$this->Session->setFlash(__('The work has been saved.'));
+				$this->Session->setFlash('El trabajo ha sido Actualizado', 'default',array('class'=>'alert alert-info animated fadeOut'));
 				return $this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The work could not be saved. Please, try again.'));
+				$this->Session->setFlash('El trabajo no pudo ser actualizado, intente nuevamente', 'default',array('class'=>'alert alert-danger animated fadeOut'));
 			}
 		} else {
 			$options = array('conditions' => array('Work.' . $this->Work->primaryKey => $id));
@@ -108,9 +115,9 @@ class WorksController extends AppController {
 		}
 		$this->request->allowMethod('post', 'delete');
 		if ($this->Work->delete()) {
-			$this->Session->setFlash(__('The work has been deleted.'));
+			$this->Session->setFlash('Trabajo eliminado', 'default',array('class'=>'alert alert-success animated fadeOut'));
 		} else {
-			$this->Session->setFlash(__('The work could not be deleted. Please, try again.'));
+			$this->Session->setFlash('El trabajo no pudo ser eliminado', 'default',array('class'=>'alert alert-danger animated fadeOut'));
 		}
 		return $this->redirect(array('action' => 'index'));
 	}
