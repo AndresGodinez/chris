@@ -13,8 +13,12 @@ class UsersController extends AppController {
  *
  * @var array
  */
-	public $components = array('Session', 'RequestHandler','Paginator');
-	public $helpers = array('Html', 'Form', 'Time', 'Js');
+	public $paginate=array(
+		'limit'=>20,
+		'order'=>array(
+			'Users.id'=>'asc'
+			)
+		);
 
 
 
@@ -25,7 +29,12 @@ class UsersController extends AppController {
  */
 	public function index() {
 		$this->User->recursive = 0;
-		$this->set('users', $this->Paginator->paginate());
+		$this->paginate['Users']['limit']=20;
+		$this->paginate['Users']['order']= array('Users.id'=>'asc');
+		// $this->paginate['Companies']['conditions']= array('Companies.id'=>1);
+		// $this->Paginator->settings=$this->paginate;
+
+		$this->set('users', $this->paginate());
 	}
 
 /**
@@ -37,7 +46,7 @@ class UsersController extends AppController {
  */
 	public function view($id = null) {
 		if (!$this->User->exists($id)) {
-			throw new NotFoundException(__('Invalid user'));
+			throw new NotFoundException('Datos inválidos');
 		}
 		$options = array('conditions' => array('User.' . $this->User->primaryKey => $id));
 		$this->set('user', $this->User->find('first', $options));
@@ -52,10 +61,17 @@ class UsersController extends AppController {
 		if ($this->request->is('post')) {
 			$this->User->create();
 			if ($this->User->save($this->request->data)) {
-				$this->Session->setFlash('El usuario se ha guardado');
+				$this->Session->setFlash('El usuario se ha guardado','default',array(
+					'class'=>'alert alert-danger animated fadeOut'
+						)
+				);
 				return $this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash('No pudo ser guardado intente nuevamente');
+				$this->Session->setFlash('No pudo ser guardado intente nuevamente','default',array(
+						'class'=>'alert alert-danger animated fadeOut'
+
+					)
+				);
 			}
 		}
 		$roles = $this->User->Role->find('list');
@@ -74,14 +90,20 @@ class UsersController extends AppController {
  */
 	public function edit($id = null) {
 		if (!$this->User->exists($id)) {
-			throw new NotFoundException(__('Invalid user'));
+			throw new NotFoundException('Datos invalidos');
 		}
 		if ($this->request->is(array('post', 'put'))) {
 			if ($this->User->save($this->request->data)) {
-				$this->Session->setFlash(__('The user has been saved.'));
+				$this->Session->setFlash('Usuario Guardado','default',array(
+						'class'=>'alert alert-info animated fadeOut'
+
+					)
+				);
 				return $this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The user could not be saved. Please, try again.'));
+				$this->Session->setFlash('El usuario no pudo ser guardado, intente nuevamente','default', array('class'=>'alert alert-danger animated fadeOut'
+									)
+				);
 			}
 		} else {
 			$options = array('conditions' => array('User.' . $this->User->primaryKey => $id));
@@ -108,9 +130,14 @@ class UsersController extends AppController {
 		}
 		$this->request->allowMethod('post', 'delete');
 		if ($this->User->delete()) {
-			$this->Session->setFlash(__('The user has been deleted.'));
+			$this->Session->setFlash('El usuario ha sido eliminado', 'default', array(
+					'class'=>'alert alert-info animated fadeOut'
+				)
+			);
 		} else {
-			$this->Session->setFlash(__('The user could not be deleted. Please, try again.'));
+			$this->Session->setFlash('El usuario no pudo ser eliminado, intente nuevamente', 'default', array('class'=>'alert alert-danger animated fadeOut'
+								)
+			);
 		}
 		return $this->redirect(array('action' => 'index'));
 	}

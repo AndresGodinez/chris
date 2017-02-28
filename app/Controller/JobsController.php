@@ -43,7 +43,7 @@ class JobsController extends AppController {
  */
 	public function view($id = null) {
 		if (!$this->Job->exists($id)) {
-			throw new NotFoundException(__('Invalid job'));
+			throw new NotFoundException('Datos inválidos');
 		}
 		$options = array('conditions' => array('Job.' . $this->Job->primaryKey => $id));
 		$this->set('job', $this->Job->find('first', $options));
@@ -58,10 +58,15 @@ class JobsController extends AppController {
 		if ($this->request->is('post')) {
 			$this->Job->create();
 			if ($this->Job->save($this->request->data)) {
-				$this->Session->setFlash(__('The job has been saved.'));
+				$this->Session->setFlash('Puesto de Trabajo Agregado','default', array(
+						'class'=>'alert alert-info animated fadeOut'
+						));
 				return $this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The job could not be saved. Please, try again.'));
+				$this->Session->setFlash('El trabajo no pudo ser agregado, intente nuevamente', 'default', array(
+						'class'=>'alert alert-danger animated fadeOut'
+						)
+				);
 			}
 		}
 		$departaments = $this->Job->Departament->find('list');

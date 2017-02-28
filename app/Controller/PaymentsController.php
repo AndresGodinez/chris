@@ -13,8 +13,12 @@ class PaymentsController extends AppController {
  *
  * @var array
  */
-	public $components = array('Paginator');
-
+	public $paginate=array(
+		'limit'=>20,
+		'order'=>array(
+			'Payments.id'=>'asc'
+			)
+		);
 /**
  * index method
  *
@@ -22,7 +26,12 @@ class PaymentsController extends AppController {
  */
 	public function index() {
 		$this->Payment->recursive = 0;
-		$this->set('payments', $this->Paginator->paginate());
+		$this->paginate['Payments']['limit']=20;
+		$this->paginate['Payments']['order']= array('Payments.id'=>'asc');
+		// $this->paginate['Companies']['conditions']= array('Companies.id'=>1);
+		// $this->Paginator->settings=$this->paginate;
+
+		$this->set('payments', $this->paginate());
 	}
 
 /**
@@ -34,7 +43,7 @@ class PaymentsController extends AppController {
  */
 	public function view($id = null) {
 		if (!$this->Payment->exists($id)) {
-			throw new NotFoundException(__('Invalid payment'));
+			throw new NotFoundException('Datos inválidos');
 		}
 		$options = array('conditions' => array('Payment.' . $this->Payment->primaryKey => $id));
 		$this->set('payment', $this->Payment->find('first', $options));
@@ -49,10 +58,19 @@ class PaymentsController extends AppController {
 		if ($this->request->is('post')) {
 			$this->Payment->create();
 			if ($this->Payment->save($this->request->data)) {
-				$this->Session->setFlash(__('The payment has been saved.'));
+				$this->Session->setFlash('Pago guardado','default', 
+					array(
+							'class'=>'alert alert-info animated fadeOut'
+
+						)
+					);
 				return $this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The payment could not be saved. Please, try again.'));
+				$this->Session->setFlash('El pago no pudo ser guardado','default', 
+					array(
+						'class'=>'alert alert-info animated fadeOut'
+					)
+				);
 			}
 		}
 		$companies = $this->Payment->Company->find('list');
@@ -68,14 +86,20 @@ class PaymentsController extends AppController {
  */
 	public function edit($id = null) {
 		if (!$this->Payment->exists($id)) {
-			throw new NotFoundException(__('Invalid payment'));
+			throw new NotFoundException('Datos inválidos');
 		}
 		if ($this->request->is(array('post', 'put'))) {
 			if ($this->Payment->save($this->request->data)) {
-				$this->Session->setFlash(__('The payment has been saved.'));
+				$this->Session->setFlash('Pago Actualizado','default', 
+					array(
+						'class'=>'alert alert-info animated fadeOut'
+					));
 				return $this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The payment could not be saved. Please, try again.'));
+				$this->Session->setFlash('el pago no pudo ser guardado, intente nuevamente', 'default', array(
+									'class'=>'alert alert-info animated fadeOut'
+									)
+				);
 			}
 		} else {
 			$options = array('conditions' => array('Payment.' . $this->Payment->primaryKey => $id));
@@ -95,13 +119,21 @@ class PaymentsController extends AppController {
 	public function delete($id = null) {
 		$this->Payment->id = $id;
 		if (!$this->Payment->exists()) {
-			throw new NotFoundException(__('Invalid payment'));
+			throw new NotFoundException('Datos inválidos');
 		}
 		$this->request->allowMethod('post', 'delete');
 		if ($this->Payment->delete()) {
-			$this->Session->setFlash(__('The payment has been deleted.'));
+			$this->Session->setFlash('Pago eliminado', 'dafault', 
+				array(
+					'class'=>'alert alert-info animated fadeOut'
+					)
+			);
 		} else {
-			$this->Session->setFlash(__('The payment could not be deleted. Please, try again.'));
+			$this->Session->setFlash('El pago no pudo ser guardado', 'default', 
+				array(
+					'class'=>'alert alert-info animated fadeOut'
+					)
+				);
 		}
 		return $this->redirect(array('action' => 'index'));
 	}

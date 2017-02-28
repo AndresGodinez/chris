@@ -34,7 +34,7 @@ class GendersController extends AppController {
  */
 	public function view($id = null) {
 		if (!$this->Gender->exists($id)) {
-			throw new NotFoundException(__('Datos invalidos'));
+			throw new NotFoundException('Datos inválidos');
 		}
 		$this->loadModel('Job');
 		$puestos=$this->Job->find('all');
@@ -52,10 +52,16 @@ class GendersController extends AppController {
 		if ($this->request->is('post')) {
 			$this->Gender->create();
 			if ($this->Gender->save($this->request->data)) {
-				$this->Session->setFlash(__('The gender has been saved.'));
+				$this->Session->setFlash('Genero Agregado','default',array(
+						'class'=>'alert alert-danger animated fadeOut'
+						)
+				);
 				return $this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The gender could not be saved. Please, try again.'));
+				$this->Session->setFlash('El genero no pudo ser agregado, intente nuevamente','default',array(
+						'class'=>'alert alert-danger animated fadeOut'
+						)
+				);
 			}
 		}
 	}
@@ -69,14 +75,20 @@ class GendersController extends AppController {
  */
 	public function edit($id = null) {
 		if (!$this->Gender->exists($id)) {
-			throw new NotFoundException(__('Invalid gender'));
+			throw new NotFoundException('Datos inválidos');
 		}
 		if ($this->request->is(array('post', 'put'))) {
 			if ($this->Gender->save($this->request->data)) {
-				$this->Session->setFlash(__('The gender has been saved.'));
+				$this->Session->setFlash('Genero Actualizado','default',array(
+						'class'=>'alert alert-danger animated fadeOut'
+						)
+				);
 				return $this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The gender could not be saved. Please, try again.'));
+				$this->Session->setFlash('El genero no pudo ser actualizado, intente nuevamente','defautl',array(
+						'class'=>'alert alert-danger animated fadeOut'
+						)
+				);
 			}
 		} else {
 			$options = array('conditions' => array('Gender.' . $this->Gender->primaryKey => $id));
@@ -94,13 +106,18 @@ class GendersController extends AppController {
 	public function delete($id = null) {
 		$this->Gender->id = $id;
 		if (!$this->Gender->exists()) {
-			throw new NotFoundException(__('Invalid gender'));
+			throw new NotFoundException('Datos inválidos');
 		}
 		$this->request->allowMethod('post', 'delete');
 		if ($this->Gender->delete()) {
-			$this->Session->setFlash(__('The gender has been deleted.'));
+			$this->Session->setFlash('El genero ha sido eliminado','default',array(
+						'class'=>'alert alert-info animated fadeOut'
+						));
 		} else {
-			$this->Session->setFlash(__('The gender could not be deleted. Please, try again.'));
+			$this->Session->setFlash('El genero no pudo ser eliminado, intente nuevamente','default',array(
+						'class'=>'alert alert-danger animated fadeOut'
+						)
+			);
 		}
 		return $this->redirect(array('action' => 'index'));
 	}

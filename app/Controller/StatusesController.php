@@ -13,7 +13,13 @@ class StatusesController extends AppController {
  *
  * @var array
  */
-	public $components = array('Paginator');
+		public $paginate=array(
+		'limit'=>20,
+		'order'=>array(
+			'statuses.id'=>'asc'
+			)
+		);
+
 
 /**
  * index method
@@ -22,7 +28,13 @@ class StatusesController extends AppController {
  */
 	public function index() {
 		$this->Status->recursive = 0;
-		$this->set('statuses', $this->Paginator->paginate());
+		$this->paginate['Statuses']['limit']=20;
+		$this->paginate['Statuses']['order']= array('Statuses.id'=>'asc');
+		// $this->paginate['Companies']['conditions']= array('Companies.id'=>1);
+		// $this->Paginator->settings=$this->paginate;
+
+		$this->set('statuses', $this->paginate());
+
 	}
 
 /**

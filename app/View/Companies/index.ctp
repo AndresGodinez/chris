@@ -9,7 +9,7 @@
 	<?php echo $this->element('progress'); ?>
 	<div class="companies index col-md-12">
 		<h2><?php echo 'Empresas'; ?></h2>
-		<table class='table table-striped table-bordered'>
+		<?php echo $this->element('table'); ?>
 		<thead>
 		<tr>
 				<th><?php echo $this->Paginator->sort('id'); ?></th>

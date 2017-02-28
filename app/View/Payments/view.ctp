@@ -1,5 +1,5 @@
-<div class="payments view">
-<h2><?php echo __('Payment'); ?></h2>
+<div class="payments view well">
+<h2><?php echo 'Pago'; ?></h2>
 	<dl>
 		<dt><?php echo __('Id'); ?></dt>
 		<dd>
@@ -11,22 +11,22 @@
 			<?php echo $this->Html->link($payment['Company']['name'], array('controller' => 'companies', 'action' => 'view', $payment['Company']['id'])); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Fecha Pago'); ?></dt>
+		<dt><?php echo __('Fecha de Pago'); ?></dt>
 		<dd>
 			<?php echo h($payment['Payment']['fecha_pago']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Over'); ?></dt>
+		<dt><?php echo __('Finaliza'); ?></dt>
 		<dd>
 			<?php echo h($payment['Payment']['over']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Created'); ?></dt>
+		<dt><?php echo __('Creado'); ?></dt>
 		<dd>
 			<?php echo h($payment['Payment']['created']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Modified'); ?></dt>
+		<dt><?php echo __('Modificado'); ?></dt>
 		<dd>
 			<?php echo h($payment['Payment']['modified']); ?>
 			&nbsp;

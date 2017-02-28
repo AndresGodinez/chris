@@ -72,7 +72,8 @@ class CompaniesController extends AppController {
 				$this->Session->setFlash('La empresa no pudo ser guardad', 'default', 
 					array(
 						'class'=>'alert alert-danger animated fadeOut'
-						));
+						)
+					);
 			}
 		}
 		$modes = $this->Company->Mode->find('list');

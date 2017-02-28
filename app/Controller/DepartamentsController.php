@@ -44,7 +44,7 @@ class DepartamentsController extends AppController {
  */
 	public function view($id = null) {
 		if (!$this->Departament->exists($id)) {
-			throw new NotFoundException(__('Invalid departament'));
+			throw new NotFoundException('Datos inválidos.');
 		}
 		$options = array('conditions' => array('Departament.' . $this->Departament->primaryKey => $id));
 		$this->set('departament', $this->Departament->find('first', $options));
@@ -59,10 +59,16 @@ class DepartamentsController extends AppController {
 		if ($this->request->is('post')) {
 			$this->Departament->create();
 			if ($this->Departament->save($this->request->data)) {
-				$this->Session->setFlash(__('The departament has been saved.'));
+				$this->Session->setFlash('Departamento Agregado','default',array(
+						'class'=>'alert alert-info animated fadeOut'
+						)
+				);
 				return $this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The departament could not be saved. Please, try again.'));
+				$this->Session->setFlash('El departamento no pudo ser guardado','default',array(
+						'class'=>'alert alert-danger animated fadeOut'
+						)
+				);
 			}
 		}
 		$users = $this->Departament->User->find('list');
@@ -79,14 +85,20 @@ class DepartamentsController extends AppController {
  */
 	public function edit($id = null) {
 		if (!$this->Departament->exists($id)) {
-			throw new NotFoundException(__('Invalid departament'));
+			throw new NotFoundException('Datos inválidos');
 		}
 		if ($this->request->is(array('post', 'put'))) {
 			if ($this->Departament->save($this->request->data)) {
-				$this->Session->setFlash(__('The departament has been saved.'));
+				$this->Session->setFlash('Departamento Actualizado','default', array(
+						'class'=>'alert alert-info animated fadeOut'
+						)
+				);
 				return $this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The departament could not be saved. Please, try again.'));
+				$this->Session->setFlash('El departamento no pudo ser actualizado, intente nuevamente','default',array(
+						'class'=>'alert alert-danger animated fadeOut'
+						)
+				);
 			}
 		} else {
 			$options = array('conditions' => array('Departament.' . $this->Departament->primaryKey => $id));
@@ -107,13 +119,19 @@ class DepartamentsController extends AppController {
 	public function delete($id = null) {
 		$this->Departament->id = $id;
 		if (!$this->Departament->exists()) {
-			throw new NotFoundException(__('Invalid departament'));
+			throw new NotFoundException('Datos inválidos.');
 		}
 		$this->request->allowMethod('post', 'delete');
 		if ($this->Departament->delete()) {
-			$this->Session->setFlash(__('The departament has been deleted.'));
+			$this->Session->setFlash('Departamento Eliminado','default',array(
+						'class'=>'alert alert-info animated fadeOut'
+						)
+			);
 		} else {
-			$this->Session->setFlash(__('The departament could not be deleted. Please, try again.'));
+			$this->Session->setFlash('El departamento no pudo ser eliminado','default',array(
+						'class'=>'alert alert-danger animated fadeOut'
+						)
+			);
 		}
 		return $this->redirect(array('action' => 'index'));
 	}
