@@ -46,7 +46,7 @@ class StatusesController extends AppController {
  */
 	public function view($id = null) {
 		if (!$this->Status->exists($id)) {
-			throw new NotFoundException(__('Invalid status'));
+			throw new NotFoundException(__('Datos inválidos'));
 		}
 		$options = array('conditions' => array('Status.' . $this->Status->primaryKey => $id));
 		$this->set('status', $this->Status->find('first', $options));
@@ -61,10 +61,20 @@ class StatusesController extends AppController {
 		if ($this->request->is('post')) {
 			$this->Status->create();
 			if ($this->Status->save($this->request->data)) {
-				$this->Session->setFlash(__('The status has been saved.'));
+				$this->Session->setFlash('Estado de trabajo agregado', 'default', 
+					array(
+							'class'=>'alert alert-info animated fadeOut'
+
+						)
+					);
 				return $this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The status could not be saved. Please, try again.'));
+				$this->Session->setFlash('El estado de trabajo no pudo ser guardado, intente nuevamente' ,'default', 
+					array(
+							'class'=>'alert alert-danger animated fadeOut'
+
+						)
+					);
 			}
 		}
 	}
@@ -78,14 +88,24 @@ class StatusesController extends AppController {
  */
 	public function edit($id = null) {
 		if (!$this->Status->exists($id)) {
-			throw new NotFoundException(__('Invalid status'));
+			throw new NotFoundException('Datos inválidos');
 		}
 		if ($this->request->is(array('post', 'put'))) {
 			if ($this->Status->save($this->request->data)) {
-				$this->Session->setFlash(__('The status has been saved.'));
+				$this->Session->setFlash('Estado de Trabajo Actualizado', 'default', 
+					array(
+							'class'=>'alert alert-info animated fadeOut'
+
+						)
+					);
 				return $this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The status could not be saved. Please, try again.'));
+				$this->Session->setFlash('El Estado de Trabajo no pudo ser actualizado, intente nuevamente','default', 
+					array(
+							'class'=>'alert alert-danger animated fadeOut'
+
+						)
+					);
 			}
 		} else {
 			$options = array('conditions' => array('Status.' . $this->Status->primaryKey => $id));
@@ -103,13 +123,22 @@ class StatusesController extends AppController {
 	public function delete($id = null) {
 		$this->Status->id = $id;
 		if (!$this->Status->exists()) {
-			throw new NotFoundException(__('Invalid status'));
+			throw new NotFoundException('Datos inválidos');
 		}
 		$this->request->allowMethod('post', 'delete');
 		if ($this->Status->delete()) {
-			$this->Session->setFlash(__('The status has been deleted.'));
+			$this->Session->setFlash('Estado de Trabajo Eliminado','default', 
+					array(
+							'class'=>'alert alert-info animated fadeOut'
+
+						)
+					);
 		} else {
-			$this->Session->setFlash(__('The status could not be deleted. Please, try again.'));
+			$this->Session->setFlash('El estado de trabajo no pudo ser Eliminado, intente nuevamente','default', 
+					array(
+							'class'=>'alert alert-danger animated fadeOut'
+
+						));
 		}
 		return $this->redirect(array('action' => 'index'));
 	}

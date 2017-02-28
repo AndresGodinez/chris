@@ -1814,7 +1814,7 @@ class I18nTest extends CakeTestCase {
 		$this->assertEquals($expected, $result);
 
 		$result = __c('abmon', 5);
-		$expected = array('Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec');
+		$expected = array('Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic');
 		$this->assertEquals($expected, $result);
 	}
 
